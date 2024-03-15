@@ -43,14 +43,14 @@ with ui.sidebar(open = "open"):
 
 
 #DataTable
-with ui.accordion(id="acc", open="closed"):
-    with ui.accordion_panel("Data Table"):
+with ui.navset_card_tab(id="tab"):
+    with ui.nav_panel("Data Table"):
         @render.data_frame  
         def penguins_dataTable():
             return render.DataTable(penguins_df)  
 
 #DataGrid
-    with ui.accordion_panel("Data Grid"):
+    with ui.nav_panel("Data Grid"):
         ui.h2("Palmer Penguins")
         @render.data_frame  
         def penguins_dataGrid():
@@ -58,6 +58,7 @@ with ui.accordion(id="acc", open="closed"):
 
 
 #Plotly Histogram
+with ui.accordion(id="acc", open="closed"):
     with ui.accordion_panel("Plotly Histogram"):   
         ui.input_slider("n", "Number of bins", 1, 100, 20)
 
